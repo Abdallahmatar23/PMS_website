@@ -1,6 +1,6 @@
 <?php require_once('../../inc/header.php');
-require('../../core/functions.php');
-include('../../core/config.php');
+// require('../../core/functions.php');
+// include('../../core/config.php');
 
 $orders = getOrderByEmail($_SESSION['user']['email']) ?? [];
 // var_dump($orders);

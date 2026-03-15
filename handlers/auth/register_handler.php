@@ -1,7 +1,7 @@
 <?php
 
-require "../../core/validations.php";
-require "../../core/functions.php";
+require_once "../../core/validations.php";
+require_once "../../core/functions.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {

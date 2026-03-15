@@ -128,6 +128,7 @@ function getProducts()
 }
 
 
+
 function getProductById($id)
 {
     $productsJson = __DIR__ . "/../data/products.json";
@@ -153,22 +154,17 @@ function addToCard($id, $name, $quantity, $price)
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
-    // $ids = array_column($_SESSION['cart'], 'id');
-    // if (in_array($id, $ids)) {
-    //     $quantity += 1;
-    // } else {
-    //     $quantity = 1;
-    // }
+
 
     $found = false;
     foreach ($_SESSION['cart'] as &$item) {
         if ($item['id'] == $id) {
             $item['quantity'] += $quantity;
             $found = true;
-            $_SESSION['cartItemQuantity'] = [
-                'id' => $item['id'],
-                'quantity' => $item['quantity']
-            ];
+            // $_SESSION['cartItemQuantity'] = [
+            //     'id' => $item['id'],
+            //     'quantity' => $item['quantity']
+            // ];
             break;
         }
     }
@@ -183,6 +179,10 @@ function addToCard($id, $name, $quantity, $price)
     if (!$found) {
         $_SESSION['cart'][] = $newProduct;
     }
+    // echo "<pre>";
+    // var_dump($_SESSION['cart']);
+    // echo "</pre>";
+    // exit;
 }
 
 function createOrder($name, $email, $address, $phone, $note)
@@ -249,7 +249,7 @@ function getOrderByEmail($email)
 
 function saveContact($name, $email, $message)
 {
-    $contactInfoJson = __DIR__ ."/../data/contactInfo.json";
+    $contactInfoJson = __DIR__ . "/../data/contactInfo.json";
     $oldData = json_decode(file_get_contents($contactInfoJson), true) ?? [];
 
     $contactData = [
@@ -269,4 +269,28 @@ function getContacts()
 {
     $contactInfoJson = __DIR__ . "/../data/contactInfo.json";
     return file_exists($contactInfoJson) ? json_decode(file_get_contents($contactInfoJson), true) : [];
+}
+
+
+function getAllQuantity()
+{
+    if (isset($_SESSION['cart'])) {
+        echo array_sum(array_column($_SESSION['cart'], 'quantity'));
+    } else {
+        echo 0;
+    }
+}
+
+function getQuantityById($id)
+{
+    $count = 0;
+    if (isset($_SESSION['cart'])) {
+
+        foreach ($_SESSION['cart'] as $product) {
+            if ($product['id'] == $id) {
+                $count = $product['quantity'];
+            }
+        }
+    } 
+    return $count;
 }

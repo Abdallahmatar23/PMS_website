@@ -19,5 +19,12 @@
         "address": "koubri kamal",
         "phone": "01204267500",
         "password": "$2y$10$NHLypMHXcD\/qGqL\/vlRub.p3.0ZAR3jMYjBlRi54M00xknPA6VABW"
+    },
+    {
+        "name": "Ali",
+        "email": "ali10@gmail.com",
+        "address": "koubri kamal",
+        "phone": "01009128305",
+        "password": "$2y$10$QGGf90FjYhiM3LBKQehaZO1FhfRAWke7W2vXsL6zCDmGb2C2Hd75a"
     }
 ]

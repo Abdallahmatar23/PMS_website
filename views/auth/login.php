@@ -1,6 +1,6 @@
 <?php
 require_once('../../inc/header.php');
-include ("../../core/functions.php");
+// include ("../../core/functions.php");
 showMessage();
 ?>
 

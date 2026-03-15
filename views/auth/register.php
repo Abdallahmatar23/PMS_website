@@ -1,6 +1,6 @@
 <?php
 require_once('../../inc/header.php');
-include "../../core/functions.php";
+// include "../../core/functions.php";
 showMessage();
 ?>
 <form action="../../handlers/auth/register_handler.php" method="POST" class="form border my-2 p-3">

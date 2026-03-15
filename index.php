@@ -1,6 +1,8 @@
 <?php
 include_once('inc/header.php');
-require('core/functions.php');
+// require('core/functions.php');
+
+
 
 ?>
 
@@ -51,17 +53,28 @@ require('core/functions.php');
                                 <label for="quantity" class="form-label small fw-bold text-muted">Quantity in cart</label>
                                 <input type="number"
                                     class="form-control text-center mx-auto"
-                                    id="quantity"
                                     style="max-width: 100px;"
-                                    value="<?php echo ($_SESSION['cartItemQuantity']['id'] == $product['id']) ? $_SESSION['cartItemQuantity']['quantity'] : 0; ?>"
+                                    name="quantity"
+                                    value="<?= getQuantityById($product['id']); ?>"
                                     min="1">
                             </div>
+                            <?php if (!getQuantityById($product['id'])): ?>
+                                <div class="text-center">
+                                    <a class="btn btn-dark mt-auto w-100" href="handlers/cart/add_item.php?id=<?= $product['id'] ?>">
+                                        <i class="bi bi-cart-plus"></i> Add to cart
+                                    </a>
+                                </div>
 
-                            <div class="text-center">
-                                <a class="btn btn-dark mt-auto w-100" href="handlers/cart/add_item.php?id=<?= $product['id'] ?>">
-                                    <i class="bi bi-cart-plus"></i> Add to cart
-                                </a>
-                            </div>
+                            <?php else: ?>
+                                <div class="text-center">
+                                    <a class="btn btn-dark mt-auto" href="handlers/cart/counter.php?id=<?= $product['id'] ?>&operator=decrement">
+                                        <i class="bi bi-cart-plus"></i> -
+                                    </a>
+                                    <a class="btn btn-dark mt-auto mx-2" href="handlers/cart/counter.php?id=<?= $product['id'] ?>&operator=increment">
+                                        <i class="bi bi-cart-plus"></i> +
+                                    </a>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

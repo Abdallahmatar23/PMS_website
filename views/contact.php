@@ -1,6 +1,6 @@
 <?php
 require_once('../inc/header.php');
-include('../core/config.php'); ?>
+// include('../core/config.php'); ?>
 
 <!-- Header-->
 <header class="bg-dark py-5">
