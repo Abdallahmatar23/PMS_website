@@ -103,7 +103,23 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+body{
+background:#f7f7f7;
+}
 
+.card{
+border-radius:10px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.03);
+}
+
+.card-img-top{
+height:200px;
+object-fit:cover;
+}
 hr {
   margin: 1rem 0;
   color: inherit;

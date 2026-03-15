@@ -4,24 +4,30 @@ require_once('../../inc/header.php');
 showMessage();
 ?>
 
-<form action="../../handlers/auth/login_handler.php" method="POST" class="form border my-2 p-3">
-    <div class="mb-3">
-        <h1 class="fw-bolder">Login Form</h1>
-        <div class="mb-3">
-            <label for="">Email</label>
-            <input class="form-control" name="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-        </div>
-        <div class="mb-3">
-            <label for="">Password</label>
-            <input class="form-control" name="password" type="password" placeholder="Enter your Password..." data-sb-validations="required,password" />
-        </div>
-        <!-- <div class="mb-3">
-            <input class="form-control" name="id" type="numeric" hidden value="" data-sb-validations="required" />
-        </div> -->
-        <div class="mb-3">
-            <input type="submit" value="Login" id="" class="btn btn-success">
-        </div>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <form action="../../handlers/auth/login_handler.php" method="POST" class="card p-4 shadow">
+
+            <h3 class="text-center mb-4">Login</h3>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control">
+            </div>
+
+            <button class="btn btn-dark w-100">
+                Login
+            </button>
+
+        </form>
+
     </div>
-</form>
+</div>
 
 <?php require_once('../../inc/footer.php'); ?>

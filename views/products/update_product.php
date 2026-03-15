@@ -1,30 +1,61 @@
-<form action= " <?php __DIR__ . "/../../handlers/products/update_product.php"?> " method = "POST" enctype="multipart/form-data" class="form border my-2 p-3">
-                    <div class="mb-3">
+<?php
+require_once('../../inc/header.php');
+showMessage();
+?>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow-lg">
+
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">Create Product</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <form action="../../handlers/products/create_product.php" method="POST" enctype="multipart/form-data">
+
                         <div class="mb-3">
-                            <label for="">Product Name</label>
-                            <input type="text" name="name" id="" class="form-control">
+                            <label class="form-label">Product Name</label>
+                            <input type="text" name="name" class="form-control">
                         </div>
+
                         <div class="mb-3">
-                            <input type="hidden" name="id" value="" class="form-control">
+                            <label class="form-label">Price Before Discount</label>
+                            <input type="number" name="oldPrice" class="form-control">
                         </div>
+
                         <div class="mb-3">
-                            <label for="">Price Before Discount</label>
-                            <input type="number" name="old_price" value="" id="" class="form-control">
+                            <label class="form-label">Price After Discount</label>
+                            <input type="number" name="newPrice" class="form-control">
                         </div>
+
                         <div class="mb-3">
-                            <label for="">Price After Discount</label>
-                            <input type="number" name="dis_price" value="" id="" class="form-control">
+                            <label class="form-label">Product Image</label>
+                            <input type="file" name="image" class="form-control">
                         </div>
+
                         <div class="mb-3">
-                            <label for="">Select Product Image</label>
-                            <input type="file" name="image" id="" value="" class="form-control">
+                            <label class="form-label">Description</label>
+                            <textarea name="description" class="form-control" rows="3"></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label for="">Description</label>
-                            <input type="text" name="description" value="" id="" class="form-control">
+
+                        <div class="d-grid">
+                            <button class="btn btn-success btn-lg">
+                                Create Product
+                            </button>
                         </div>
-                        <div class="mb-3">
-                            <input type="submit" value="Send" id="" class="btn btn-success">
-                        </div>
-                    </div>
-                </form>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<?php require_once('../../inc/footer.php'); ?>

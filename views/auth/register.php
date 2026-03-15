@@ -1,42 +1,64 @@
 <?php
 require_once('../../inc/header.php');
-// include "../../core/functions.php";
 showMessage();
 ?>
-<form action="../../handlers/auth/register_handler.php" method="POST" class="form border my-2 p-3">
-    <div class="mb-3">
-        <h1 class="fw-bolder">Register Form</h1>
-        <!-- <div class="mb-3">
-                            <input class="form-control" name="id" type="numeric" data-sb-validations="required" hidden />
-                        </div> -->
-        <div class="mb-3">
-            <label for="">Name</label>
-            <input class="form-control" name="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-        </div>
-        <div class="mb-3">
-            <label for="">Email</label>
-            <input class="form-control" name="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-        </div>
-        <div class="mb-3">
-            <label for="">Address</label>
-            <input class="form-control" name="address" type="text" placeholder="Enter your Address..." data-sb-validations="required" />
-        </div>
-        <div class="mb-3">
-            <label for="">Phone</label>
-            <input class="form-control" name="phone" type="tel" placeholder="(\\+20|0)1[0-5][0-9]{8}" data-sb-validations="required" />
-        </div>
-        <div class="mb-3">
-            <label for="">Password</label>
-            <input class="form-control" name="password" type="password" placeholder="Enter your Password..." data-sb-validations="required,password" />
-        </div>
-        <div class="mb-3">
-            <label for="">Confirm Password</label>
-            <input class="form-control" name="confirmPassword" type="password" placeholder="Enter your Password Again..." data-sb-validations="required,password" />
-        </div>
-        <div class="mb-3">
-            <input type="submit" value="Register" id="" class="btn btn-success">
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-6 col-lg-5">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-4 fw-bold">Create Account</h2>
+
+                    <form action="../../handlers/auth/register_handler.php" method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input class="form-control" name="name" type="text" placeholder="Enter your name..." required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input class="form-control" name="email" type="email" placeholder="name@example.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <input class="form-control" name="address" type="text" placeholder="Enter your address..." required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input class="form-control" name="phone" type="tel" placeholder="+20 10 0000 0000" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input class="form-control" name="password" type="password" placeholder="Enter your password..." required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <input class="form-control" name="confirmPassword" type="password" placeholder="Confirm your password..." required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-success btn-lg">
+                                Register
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
         </div>
     </div>
-</form>
+</div>
 
 <?php require_once('../../inc/footer.php'); ?>

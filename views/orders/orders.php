@@ -1,51 +1,90 @@
-<?php require_once('../../inc/header.php');
-// require('../../core/functions.php');
-// include('../../core/config.php');
+<?php
+require_once('../../inc/header.php');
 
 $orders = getOrderByEmail($_SESSION['user']['email']) ?? [];
-// var_dump($orders);
-// var_dump($orders["items"]);
-// exit;
-
 $counter = 1;
 ?>
 
+<div class="container py-5">
 
-<div class="container px-4 px-lg-5 mt-5">
+    <h2 class="mb-4 text-center fw-bold">My Orders</h2>
+
     <div class="row">
         <div class="col-12">
-            <?php foreach ($orders as $order):
-                echo "<h2> Order $counter</h2>";
+
+            <?php foreach ($orders as $order): ?>
+
+                <div class="card shadow-sm mb-4">
+
+                    <div class="card-header bg-dark text-white d-flex justify-content-between">
+                        <h5 class="mb-0">Order #<?= $counter ?></h5>
+                        <span>Total: $<?= $order['total'] ?></span>
+                    </div>
+
+                    <div class="card-body">
+
+                        <table class="table table-hover align-middle">
+
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <?php foreach (($order["items"] ?? []) as $item): ?>
+
+                                    <tr>
+
+                                        <td class="fw-semibold">
+                                            <?= $item['pName']; ?>
+                                        </td>
+
+                                        <td>
+                                            $<?= $item['price'] ?>
+                                        </td>
+
+                                        <td>
+                                            <span class="badge bg-secondary">
+                                                <?= $item['quantity'] ?>
+                                            </span>
+                                        </td>
+
+                                        <td class="text-success fw-bold">
+                                            $<?= $item['price'] * $item['quantity'] ?>
+                                        </td>
+
+                                    </tr>
+
+                                <?php endforeach; ?>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="card-footer text-end">
+
+                        <h5 class="text-success mb-0">
+                            Total Order Price: $<?= $order['total']; ?>
+                        </h5>
+
+                    </div>
+
+                </div>
+
+            <?php
                 $counter++;
+            endforeach;
             ?>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach (($order["items"] ?? []) as $item): ?>
-                            <tr>
-                                <td><?= $item['pName']; ?></td>
-                                <td>$<?= $item['price'] ?></td>
-                                <td><?= $item['quantity'] ?></td>
-                                <td>$<?= $item['price'] * $item['quantity'] ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                        <tr>
-                            <td colspan="2">
-                                <h3 align="center">Total Order Price</h3>
-                            </td>
-                            <td colspan="2">
-                                <h3 align="center"><?= $order['total']; ?>$</h3>
-                            </td>
-                        </tr>
-                </table>
-            <?php endforeach; ?>
+
         </div>
     </div>
 </div>
+
+<?php require_once('../../inc/footer.php'); ?>

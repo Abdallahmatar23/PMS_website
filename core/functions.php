@@ -291,6 +291,11 @@ function getQuantityById($id)
                 $count = $product['quantity'];
             }
         }
-    } 
+    }
     return $count;
+}
+
+function activeNavIcon($page)
+{
+    return ($page == basename($_SERVER['PHP_SELF'])) ? "active text-primary" : "";
 }

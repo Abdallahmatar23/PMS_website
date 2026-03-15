@@ -1,91 +1,114 @@
-<?php require_once('../inc/header.php');
-// require('../core/functions.php');
-// include('../core/config.php');
-?>
+<?php require_once('../inc/header.php'); ?>
 
-<!-- Header-->
 <header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Shop in style</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-        </div>
+    <div class="container text-center text-white">
+        <h1 class="display-4 fw-bold">Shopping Cart</h1>
     </div>
 </header>
-<!-- Section-->
+
 <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-bordered">
-                    <thead>
+
+    <div class="container">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-dark">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Delete</th>
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
+
                     <tbody>
+
                         <?php
-                        // echo "<pre>";
-                        // var_dump($cartProducts);
-                        // echo "</pre>";
-                        if (isset($_SESSION['cart'])) {
-                            $cartProducts = $_SESSION['cart'];
-                        } else {
-                            $cartProducts = [];
-                        }
+                        $cartProducts = $_SESSION['cart'] ?? [];
                         $total = 0;
-                        foreach ($cartProducts as $product): ?>
-                            <tr>
-                                <th scope="row"><?= $product['id'] ?></th>
-                                <td><?= $product['pName'] ?></td>
-                                <td>$<?= $product['price'] ?></td>
-                                <td>
-                                    <input type="number" value="<?= $product['quantity'];?>">
-                                    <!-- <button class="btn btn-sm btn-secondary minus" data-id="<?//= $product['id'] ?>">-</button>
-                                    <input
-                                        type="number"
-                                        class="form-control text-center quantity"
-                                        data-id="<?//= $product['id'] ?>"
-                                        value="<?//= $product['quantity'] ?>"
-                                        style="width:60px">
-                                    <button class="btn btn-sm btn-secondary plus" data-id="<?//= $product['id'] ?>">+</button> -->
-                                </td>
-                                <td>$<?= $sum = ($product['price'] * $product['quantity']) ?></td>
-                                <td>
-                                    <a href="../handlers/cart/delete_item.php?id=<?= $product['id'] ?>" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                        <?php
+
+                        foreach ($cartProducts as $product):
+
+                            $sum = $product['price'] * $product['quantity'];
                             $total += $sum;
-                        endforeach; ?>
+                        ?>
+
+                            <tr>
+
+                                <td><?= $product['id'] ?></td>
+
+                                <td class="fw-semibold">
+                                    <?= $product['pName'] ?>
+                                </td>
+
+                                <td>$<?= $product['price'] ?></td>
+
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        <?= $product['quantity'] ?>
+                                    </span>
+                                </td>
+
+                                <td class="text-success fw-bold">
+                                    $<?= $sum ?>
+                                </td>
+
+                                <td>
+
+                                    <a href="../handlers/cart/delete_item.php?id=<?= $product['id'] ?>"
+                                        class="btn btn-danger btn-sm">
+                                        Delete
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+                        <?php endforeach; ?>
+
                         <tr>
-                            <td colspan="2">
-                                <h3 align="center">Total Price</h3>
 
+                            <td colspan="3"></td>
+
+                            <td class="fw-bold">Total</td>
+
+                            <td class="text-success fw-bold">
+                                $<?= $_SESSION['totalCart'] = $total; ?>
                             </td>
-                            <td colspan="3">
-                                <h3 align="center"><?= $_SESSION['totalCart'] = $total; ?>$</h3>
-                            </td>
+
                             <td>
-                                <a href="<?php if (isset($_SESSION['user'])) {
-                                                echo "orders/checkout.php";
-                                            } else {
-                                                echo "auth/login.php";
-                                            } ?>"
-                                    class="btn btn-primary">Checkout</a>
+
+                                <a href="<?php
+                                            echo isset($_SESSION['user'])
+                                                ? "orders/checkout.php"
+                                                : "auth/login.php";
+                                            ?>"
+
+                                    class="btn btn-primary">
+
+                                    Checkout
+
+                                </a>
 
                             </td>
+
                         </tr>
+
+                    </tbody>
+
                 </table>
+
             </div>
         </div>
-    </div>
-</section>
 
+    </div>
+
+</section>
 
 <?php require_once('../inc/footer.php'); ?>

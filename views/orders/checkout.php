@@ -1,75 +1,128 @@
-<?php require_once('../../inc/header.php');
-// require('../../core/functions.php');
-// include('../../core/config.php');
-// session_start();
-?>
-<!-- Header-->
+<?php require_once('../../inc/header.php'); ?>
+
 <header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Shop in style</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-        </div>
+    <div class="container text-center text-white">
+        <h1 class="display-4 fw-bolder">Checkout</h1>
+        <p class="lead text-white-50">Complete your order</p>
     </div>
 </header>
-<!-- Section-->
+
 <?php
 $cartProducts = $_SESSION['cart'] ?? [];
-// var_dump($cartProducts);
-// foreach ($cartProducts as $product){
-//     // echo  $product['id'] ,"</br>";
-//     var_dump($product);
-//     echo "</br>";
-// }
-// exit;
 ?>
+
 <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row">
-            <div class="col-4">
-                <div class="border p-2">
-                    <div class="products">
-                        <ul class="list-unstyled">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Cart Summary -->
+            <div class="col-md-4">
+
+                <div class="card shadow-sm">
+
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Your Cart</h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <ul class="list-group list-group-flush">
+
                             <?php foreach ($cartProducts as $product): ?>
-                                <li class="border p-2 my-1"> <?= $product['pName']; ?> -
-                                    <span class="text-success mx-2 mr-auto bold"> <?= $product['quantity'] . " x " . $product['price'] ?>$</span>
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                                    <span><?= $product['pName']; ?></span>
+
+                                    <span class="text-success fw-bold">
+                                        <?= $product['quantity'] ?> x $<?= $product['price'] ?>
+                                    </span>
+
                                 </li>
+
                             <?php endforeach; ?>
+
                         </ul>
+
+                        <hr>
+
+                        <h5 class="text-end">
+                            Total :
+                            <span class="text-success">
+                                $<?= $_SESSION['totalCart'] ?? 0; ?>
+                            </span>
+                        </h5>
+
                     </div>
-                    <h3>Total : <?= $_SESSION['totalCart'] ?? 0; ?> $</h3>
                 </div>
+
             </div>
-            <div class="col-8">
-                <form action="../../handlers/orders/create_order.php" method="POST" class="form border my-2 p-3">
-                    <div class="mb-3">
-                        <div class="mb-3">
-                            <label for="">Name</label>
-                            <input type="text" name="name" value="<?php echo $_SESSION['user']['name']; ?>" id="" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Email</label>
-                            <input type="email" name="email" value="<?php echo $_SESSION['user']['email']; ?>" id="" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Address</label>
-                            <input type="text" name="address" value="<?php echo $_SESSION['user']['address']; ?>" id="" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Phone</label>
-                            <input type="tel" name="phone" value="<?php echo $_SESSION['user']['phone']; ?>" id="" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Notes</label>
-                            <input type="text" name="note" id="" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <input type="submit" value="Send" id="" class="btn btn-success">
-                        </div>
+
+            <!-- Checkout Form -->
+            <div class="col-md-8">
+
+                <div class="card shadow-sm">
+
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Shipping Information</h5>
                     </div>
-                </form>
+
+                    <div class="card-body">
+
+                        <form action="../../handlers/orders/create_order.php" method="POST">
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" name="name"
+                                        value="<?= $_SESSION['user']['name']; ?>"
+                                        class="form-control">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="email"
+                                        value="<?= $_SESSION['user']['email']; ?>"
+                                        class="form-control">
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Address</label>
+                                <input type="text" name="address"
+                                    value="<?= $_SESSION['user']['address']; ?>"
+                                    class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" name="phone"
+                                    value="<?= $_SESSION['user']['phone']; ?>"
+                                    class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Notes</label>
+                                <textarea name="note" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <div class="d-grid">
+                                <button class="btn btn-success btn-lg">
+                                    Place Order
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </div>
 </section>
+
 <?php require_once('../../inc/footer.php'); ?>
