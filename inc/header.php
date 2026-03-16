@@ -42,7 +42,14 @@ require_once __DIR__ . '/../core/functions.php';
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <li class="nav-item">
+                            <span class="nav-link text-info">
+                                <i class="bi bi-person-circle"></i>
+                                <?= $_SESSION['user']['name']; ?>
+                            </span>
+                        </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link <?= activeNavIcon("index.php") ?>"
                             href="<?= $base ?>/index.php">
@@ -64,7 +71,7 @@ require_once __DIR__ . '/../core/functions.php';
                         </a>
                     </li>
 
-                    <?php if (isset($_SESSION['user'])): ?>
+                    <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == "admin")): ?>
 
                         <li class="nav-item">
                             <a class="nav-link <?= activeNavIcon("create_product.php") ?>"
@@ -72,7 +79,14 @@ require_once __DIR__ . '/../core/functions.php';
                                 Add Product
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link <?= activeNavIcon("add_admin.php") ?>"
+                                href="<?= $base ?>/views/admin/add_admin.php">
+                                Add Admin
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['user'])): ?>
                         <li class="nav-item">
                             <a class="nav-link <?= activeNavIcon("orders.php") ?>"
                                 href="<?= $base ?>/views/orders/orders.php">
@@ -124,6 +138,8 @@ require_once __DIR__ . '/../core/functions.php';
                     </button>
 
                 </form>
+
+
 
             </div>
         </div>

@@ -1,7 +1,12 @@
 <?php
 require_once('../../inc/header.php');
 
-$orders = getOrderByEmail($_SESSION['user']['email']) ?? [];
+if ($_SESSION['user']['role'] == "user") {
+    $orders = getOrderByEmail($_SESSION['user']['email']) ?? [];
+} else {
+    $orders = getAllOrder() ?? [];
+}
+
 $counter = 1;
 ?>
 

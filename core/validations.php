@@ -76,6 +76,17 @@ function sanitizeFields($field)
     return $field;
 }
 
+function validateRole($role)
+{
+    $allowedRoles = ['admin', 'user'];
+    if (!in_array($role, $allowedRoles)) {
+        return false;
+    }
+
+    return $role;
+}
+
+
 function validateRegister($name, $email, $address, $phone, $password, $confirmPassword, $emailExists)
 {
     $fields = [
@@ -113,12 +124,51 @@ function validateRegister($name, $email, $address, $phone, $password, $confirmPa
     }
     return true;
 }
-function validateLogin($email, $password)
+function validateAdmin($name, $email, $address, $phone, $password, $confirmPassword, $role, $emailExists)
+{
+    $fields = [
+        'name' => $name,
+        'email' => $email,
+        'address' => $address,
+        'phone' => $phone,
+        'password' => $password,
+        'confirmPassword' => $confirmPassword,
+        'role' => $role
+    ];
+
+    foreach ($fields as $key => $val) {
+        if ($error = validateRequire($val, $key)) {
+            return $error;
+        }
+    }
+
+    if ($error = validateEmail($email)) {
+        return $error;
+    }
+    if ($emailExists) {
+        return "The Email Already Exist";
+    }
+    if ($error = validateAddress($address)) {
+        return $error;
+    }
+    if ($error = validatePhone($phone)) {
+        return $error;
+    }
+    if ($error = validatePassword($password)) {
+        return $error;
+    }
+    if ($error = validateConfirmPassword($password, $confirmPassword)) {
+        return $error;
+    }
+    return true;
+}
+function validateLogin($email, $password, $role)
 {
     $fields = [
 
         'email' => $email,
-        'password' => $password
+        'password' => $password,
+        'role' => $role
     ];
 
     foreach ($fields as $key => $val) {

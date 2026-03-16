@@ -52,11 +52,33 @@ function register($name, $email, $address, $phone, $password)
         'email' => $email,
         'address' => $address,
         'phone' => $phone,
-        'password' => $hashPassword
+        'password' => $hashPassword,
+        'role' => "user"
     ];
 
     $oldData[] = $userData;
     file_put_contents($usersJson, json_encode($oldData, JSON_PRETTY_PRINT));
+
+    return true;
+}
+function addAdmin($name, $email, $address, $phone, $password)
+{
+    $userJson = __DIR__ . '/../data/users.json';
+    $oldData = json_decode(file_get_contents($userJson), true);
+
+    $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+    $newAdmin = [
+        'name' => $name,
+        'email' => $email,
+        'address' => $address,
+        'phone' => $phone,
+        'password' => $hashPassword,
+        'role' => "admin"
+    ];
+
+    $oldData[] = $newAdmin;
+
+    file_put_contents($userJson, json_encode($oldData, JSON_PRETTY_PRINT));
 
     return true;
 }
@@ -72,13 +94,21 @@ function login($email, $password)
                 'name' => $user['name'],
                 'email' => $user['email'],
                 'address' => $user['address'],
-                'phone' => $user['phone']
+                'phone' => $user['phone'],
+                'role' => $user['role']
             ];
             return true;
         }
     }
     return false;
 }
+
+// function loginAdmin($role){
+//     if($role == "admin"&& $user['email'] == $email && password_verify($password, $user['password'])){
+
+//     }
+// }
+
 
 function createProduct($name, $oldPrice, $newPrice, $relativePath, $description)
 {
@@ -245,6 +275,18 @@ function getOrderByEmail($email)
     }
 
     return $userOrders;
+}
+function getAllOrder()
+{
+    $ordersJson = __DIR__ . "/../data/orders.json";
+    if (file_exists($ordersJson)) {
+        $orders = json_decode(file_get_contents($ordersJson), true);
+    } else {
+        $orders = [];
+    }
+    // var_dump($orders);
+    // exit;
+    return $orders;
 }
 
 function saveContact($name, $email, $message)

@@ -4,27 +4,31 @@
         "email": "abdallahmatar10@gmail.com",
         "address": "koubri kamal",
         "phone": "01204267500",
-        "password": "$2y$10$nU6Xu5c364mNM51fWyTqYOHQkj1tfVJ36MmllnWvoP5pTsj\/6\/KjO"
+        "password": "$2y$10$kPtEnbIiBkj\/M3hyQDt96OThXR21H\/c5m02g1\/VTnJ5YEctw2k.Ku",
+        "role": "user"
     },
     {
-        "name": "Abdalla magdy beder\u202c\u200f",
-        "email": "abdallahmatar100@gmail.com",
-        "address": "koubri kamal23",
-        "phone": "01505230513",
-        "password": "$2y$10$cWiH0GUOUjHUgCoJH3uCcuwvQXaMPl9oD5MJQicenr3MNEjh1az5."
-    },
-    {
-        "name": "Abdalla magdy beder\u202c\u200f",
-        "email": "abdallahmatar1000@gmail.com",
+        "name": "Abdallah Magdi Matar",
+        "email": "abdallahmatar@gmail.com",
         "address": "koubri kamal",
         "phone": "01204267500",
-        "password": "$2y$10$NHLypMHXcD\/qGqL\/vlRub.p3.0ZAR3jMYjBlRi54M00xknPA6VABW"
+        "password": "$2y$10$kPtEnbIiBkj\/M3hyQDt96OThXR21H\/c5m02g1\/VTnJ5YEctw2k.Ku",
+        "role": "admin"
     },
     {
-        "name": "Ali",
-        "email": "ali10@gmail.com",
-        "address": "koubri kamal",
-        "phone": "01009128305",
-        "password": "$2y$10$QGGf90FjYhiM3LBKQehaZO1FhfRAWke7W2vXsL6zCDmGb2C2Hd75a"
+        "name": "user",
+        "email": "user@user.com",
+        "address": "user address",
+        "phone": "01000000000",
+        "password": "$2y$10$laxkL0nM.rhLO.pUaXlX6eYUkowgMKYRf3UmS2CywE37\/s9CmJnbK",
+        "role": "user"
+    },
+    {
+        "name": "admin",
+        "email": "admin@admin.com",
+        "address": "admin address",
+        "phone": "01111111111",
+        "password": "$2y$10$ZvKpzlOB2ideF59\/GCbpWe3fmLdFBilOknmxNpUvu0Owb7nvT6kgq",
+        "role": "admin"
     }
 ]
