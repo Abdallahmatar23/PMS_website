@@ -79,11 +79,7 @@ function sanitizeFields($field)
 function validateRole($role)
 {
     $allowedRoles = ['admin', 'user'];
-    if (!in_array($role, $allowedRoles)) {
-        return false;
-    }
-
-    return $role;
+    return (!in_array($role, $allowedRoles)) ? "the Role must be admin or user" : true;
 }
 
 
@@ -175,6 +171,9 @@ function validateLogin($email, $password, $role)
         if ($error = validateRequire($val, $key)) {
             return $error;
         }
+    }
+    if ($error = validateRole($role)) {
+        return $error;
     }
     return true;
 }

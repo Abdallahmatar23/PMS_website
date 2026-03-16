@@ -12,15 +12,20 @@ function setMessage($type, $alert)
 function showMessage()
 {
     if (isset($_SESSION['alert'])) {
+
         $type = $_SESSION['alert']['type'];
         $alert = $_SESSION['alert']['alert'];
 
-        echo "<div class = 'alert alert=$type'>$alert</div>";
+        echo "
+        <div class='alert alert-$type alert-dismissible fade show text-center' role='alert'>
+            $alert
+            <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+        </div>
+        ";
 
         unset($_SESSION['alert']);
     }
 }
-
 function emailExists($email)
 {
     $usersJson = __DIR__ . "/../data/users.json";
@@ -83,13 +88,13 @@ function addAdmin($name, $email, $address, $phone, $password)
     return true;
 }
 
-function login($email, $password)
+function login($email, $password, $role)
 {
     $usersJson = __DIR__ . "/../data/users.json";
     $users = json_decode(file_get_contents($usersJson), true);
 
     foreach ($users as $user) {
-        if ($user['email'] == $email && password_verify($password, $user['password'])) {
+        if ($user['email'] == $email && password_verify($password, $user['password']) && $user['role'] == $role) {
             $_SESSION['user'] = [
                 'name' => $user['name'],
                 'email' => $user['email'],
@@ -103,10 +108,25 @@ function login($email, $password)
     return false;
 }
 
-// function loginAdmin($role){
-//     if($role == "admin"&& $user['email'] == $email && password_verify($password, $user['password'])){
+// function loginAdmin($email, $password, $role)
+// {
 
+//     $usersJson = __DIR__ . "/../data/users.json";
+//     $users = json_decode(file_get_contents($usersJson), true);
+
+//     foreach ($users as $user) {
+//         if ($role == "admin" && $user['email'] == $email && password_verify($password, $user['password'])) {
+//             $_SESSION['user'] = [
+//                 'name' => $user['name'],
+//                 'email' => $user['email'],
+//                 'address' => $user['address'],
+//                 'phone' => $user['phone'],
+//                 'role' => $user['role']
+//             ];
+//             return true;
+//         }
 //     }
+//     return false;
 // }
 
 
@@ -340,4 +360,27 @@ function getQuantityById($id)
 function activeNavIcon($page)
 {
     return ($page == basename($_SERVER['PHP_SELF'])) ? "active text-primary" : "";
+}
+
+function adminOnly()
+{
+
+    if (!isset($_SESSION['user']) || ($_SESSION['user']['role'] !== 'admin')) {
+
+        setMessage("danger", "Access Denied! You are not authorized to access this page.");
+
+        header("Location: ../../index.php");
+        exit;
+    }
+}
+function userOnly()
+{
+
+    if (!isset($_SESSION['user']) || ($_SESSION['user']['role'] !== 'user')) {
+
+        setMessage("danger", "Access Denied! You are not authorized to access this page.");
+
+        header("Location: ../../index.php");
+        exit;
+    }
 }

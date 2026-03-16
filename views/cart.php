@@ -1,4 +1,6 @@
-<?php require_once('../inc/header.php'); ?>
+<?php require_once('../inc/header.php');
+userOnly();
+?>
 
 <header class="bg-dark py-5">
     <div class="container text-center text-white">
