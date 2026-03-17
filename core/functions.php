@@ -384,3 +384,82 @@ function userOnly()
         exit;
     }
 }
+
+
+function deleteProduct($id)
+{
+    $file = "../../data/products.json";
+    $oldData = (file_exists($file)) ? json_decode(file_get_contents($file), true) : [];
+
+    foreach ($oldData as $key => $product) {
+        if ($product['id'] == $id) {
+            unset($oldData[$key]);
+        }
+    }
+    file_put_contents($file, json_encode($oldData, JSON_PRETTY_PRINT));
+    return true;
+}
+
+function editProduct($id, $name, $oldPrice, $newPrice, $imagePath, $description)
+{
+    $file = "../../data/products.json";
+    $oldData = (file_exists($file)) ? json_decode(file_get_contents($file), true) : [];
+
+    foreach ($oldData as $key => $product) {
+        if ($product['id'] == $id) {
+
+
+            $oldData[$key]['name'] = $name;
+            $oldData[$key]['oldPrice'] = $oldPrice;
+            $oldData[$key]['newPrice'] = $newPrice;
+            $oldData[$key]['imagePath'] = $imagePath;
+            $oldData[$key]['description'] = $description;
+
+            break;
+        }
+    }
+    file_put_contents($file, json_encode($oldData, JSON_PRETTY_PRINT));
+    return true;
+}
+
+function deleteContact($email)
+{
+    $file = "../../data/contactInfo.json";
+    $oldData = (file_exists($file)) ? json_decode(file_get_contents($file), true) : [];
+
+    foreach ($oldData as $key => $contact) {
+        if ($contact['email'] == $email) {
+            unset($oldData[$key]);
+        }
+    }
+    file_put_contents($file, json_encode($oldData, JSON_PRETTY_PRINT));
+    return true;
+}
+
+function getUsers($role)
+{
+    $usersJson = __DIR__ . "/../data/users.json";
+    $allUsers = (file_exists($usersJson)) ? json_decode(file_get_contents($usersJson), true) : [];
+    $users = [];
+    foreach ($allUsers as $user) {
+        if ($user['role'] == $role) {
+            $users[] = $user;
+        }
+    }
+    
+    return $users;
+    }
+
+    function deleteUser($id)
+    {
+        $file = "../../data/users.json";
+        $oldData = (file_exists($file)) ? json_decode(file_get_contents($file), true) : [];
+    
+        foreach ($oldData as $key => $user) {
+            if ($user['id'] == $id) {
+                unset($oldData[$key]);
+            }
+        }
+        file_put_contents($file, json_encode($oldData, JSON_PRETTY_PRINT));
+        return true;
+    }

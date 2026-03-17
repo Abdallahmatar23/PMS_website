@@ -1,42 +1,34 @@
 [
     {
         "id": 1,
-        "name": "Fuller Bradford",
-        "oldPrice": "996",
-        "newPrice": "316",
-        "imagePath": "public\/uploads\/1773355364_car.png",
-        "description": "Ryan Zamora"
+        "name": "Gaming Mouse",
+        "oldPrice": "1000",
+        "newPrice": "500",
+        "imagePath": "public\/uploads\/1773703883_download (1).jpeg",
+        "description": "Gaming Mouse"
     },
     {
         "id": 2,
-        "name": "Yael Becker",
-        "oldPrice": "354",
-        "newPrice": "212",
-        "imagePath": "public\/uploads\/1773355382_134883.jpg",
-        "description": "Grady Calhoun"
+        "name": "Camera",
+        "oldPrice": "5000",
+        "newPrice": "3500",
+        "imagePath": "public\/uploads\/1773703927_images.jpeg",
+        "description": "Digital camera"
     },
     {
         "id": 3,
-        "name": "Kevin Bolton",
-        "oldPrice": "920",
-        "newPrice": "443",
-        "imagePath": "public\/uploads\/1773355411_1329768.png",
-        "description": "Macaulay Galloway"
+        "name": "Wireless Gaming Mouse",
+        "oldPrice": "2000",
+        "newPrice": "1500",
+        "imagePath": "public\/uploads\/1773704130_download (4).jpeg",
+        "description": "Wireless Gaming Mouse"
     },
     {
         "id": 4,
-        "name": "Summer Alexander",
+        "name": "Airpods",
         "oldPrice": "614",
         "newPrice": "500",
-        "imagePath": "public\/uploads\/1773494772_1325984.jpeg",
-        "description": "Jayme Vega"
-    },
-    {
-        "id": 5,
-        "name": "Chester Vincent",
-        "oldPrice": "980",
-        "newPrice": "724",
-        "imagePath": "public\/uploads\/1773503739_FB_IMG_1695832723342.jpg",
-        "description": "India Oneil"
+        "imagePath": "public\/uploads\/1773780392_download (3).jpeg",
+        "description": "Airpods pro"
     }
 ]

@@ -64,25 +64,39 @@ require_once __DIR__ . '/../core/functions.php';
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link <?= activeNavIcon("contact.php") ?>"
-                            href="<?= $base ?>/views/contact.php">
-                            Contact
-                        </a>
-                    </li>
 
+                    <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == "user")): ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?= activeNavIcon("contact.php") ?>"
+                                href="<?= $base ?>/views/contact.php">
+                                Contact
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == "admin")): ?>
 
                         <li class="nav-item">
-                            <a class="nav-link <?= activeNavIcon("create_product.php") ?>"
-                                href="<?= $base ?>/views/products/create_product.php">
-                                Add Product
+                            <a class="nav-link <?= activeNavIcon("contact_info.php") ?>"
+                                href="<?= $base ?>/views/admin/contact_info.php">
+                                Users Contacts
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= activeNavIcon("add_admin.php") ?>"
-                                href="<?= $base ?>/views/admin/add_admin.php">
-                                Add Admin
+                            <a class="nav-link <?= activeNavIcon("products.php") ?>"
+                                href="<?= $base ?>/views/admin/products.php">
+                                Manage Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= activeNavIcon("manage_user.php") ?>"
+                                href="<?= $base ?>/views/admin/manage_user.php">
+                                Manage Users
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= activeNavIcon("manage_admin.php") ?>"
+                                href="<?= $base ?>/views/admin/manage_admin.php">
+                                Manage Admin
                             </a>
                         </li>
                     <?php endif; ?>

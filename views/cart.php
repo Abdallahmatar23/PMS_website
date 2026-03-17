@@ -1,5 +1,5 @@
 <?php require_once('../inc/header.php');
-userOnly();
+// userOnly();
 ?>
 
 <header class="bg-dark py-5">
