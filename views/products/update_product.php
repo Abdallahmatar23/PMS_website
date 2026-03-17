@@ -45,7 +45,7 @@ $product = getProductById($_GET['id']);
 
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea name="description" value="<?= $product['description'] ?>" class="form-control" rows="3"></textarea>
+                            <textarea name="description" class="form-control" rows="3"><?= $product['description'] ?></textarea>
                         </div>
 
                         <div class="d-grid">

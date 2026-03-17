@@ -23,6 +23,7 @@ showMessage();
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
+                            <!-- <th>Product Image</th> -->
                             <th>Product Name</th>
                             <th>Price Before Discount</th>
                             <th>Price After Discount</th>
@@ -40,6 +41,11 @@ showMessage();
 
                                 <td><?= $product['id'] ?></td>
 
+                                <!-- <td><img class="card-img-top"
+                                        src="<?//= $product['imagePath'] ?>"
+                                        alt="<?//= $product['name'] ?>"
+                                        style="height:20px; object-fit:cover;"></td> -->
+
                                 <td class="fw-semibold">
                                     <?= $product['name'] ?>
                                 </td>
@@ -51,7 +57,7 @@ showMessage();
 
                                 <td>
 
-                                    
+
                                     <a href="../products/update_product.php?id=<?= $product['id'] ?>"
                                         class="btn btn-danger btn-sm">
                                         Edit
