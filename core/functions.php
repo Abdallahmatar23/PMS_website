@@ -450,13 +450,13 @@ function getUsers($role)
     return $users;
     }
 
-    function deleteUser($id)
+    function deleteUser($email)
     {
         $file = "../../data/users.json";
         $oldData = (file_exists($file)) ? json_decode(file_get_contents($file), true) : [];
     
         foreach ($oldData as $key => $user) {
-            if ($user['id'] == $id) {
+            if ($user['email'] == $email) {
                 unset($oldData[$key]);
             }
         }

@@ -213,5 +213,73 @@
             }
         ],
         "total": 7544
+    },
+    {
+        "id": "69b9c1e2e5007",
+        "name": "Abdallah Magdi Matar",
+        "email": "abdallahmatar100@gmail.com",
+        "address": "koubri kamal",
+        "phone": "01204267500",
+        "note": "first order",
+        "items": [
+            {
+                "pName": "Camera",
+                "quantity": 1,
+                "price": "3500"
+            },
+            {
+                "pName": "Wireless Gaming Mouse",
+                "quantity": 1,
+                "price": "1500"
+            },
+            {
+                "pName": "Airpods",
+                "quantity": 5,
+                "price": "500"
+            }
+        ],
+        "total": 7500
+    },
+    {
+        "id": "69b9c1fee1f6e",
+        "name": "Abdallah Magdi Matar",
+        "email": "abdallahmatar100@gmail.com",
+        "address": "koubri kamal",
+        "phone": "01204267500",
+        "note": "second order",
+        "items": [
+            {
+                "pName": "Wireless Gaming Mouse",
+                "quantity": 3,
+                "price": "1500"
+            }
+        ],
+        "total": 4500
+    },
+    {
+        "id": "69b9c4e3f364a",
+        "name": "Abdallahbedier",
+        "email": "abdallahmatar1@gmail.com",
+        "address": "koubri kamal 6",
+        "phone": "01222222222",
+        "note": "first order",
+        "items": [
+            {
+                "pName": "Gaming Mouse",
+                "quantity": 5,
+                "price": "3500"
+            },
+            {
+                "pName": "Wireless Gaming Mouse",
+                "quantity": 1,
+                "price": "1500"
+            },
+            {
+                "pName": "Camera",
+                "quantity": 1,
+                "price": "3500"
+            }
+        ],
+        "total": 22500
     }
 ]

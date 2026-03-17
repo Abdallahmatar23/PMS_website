@@ -1,21 +1,5 @@
-[
-    {
-        "id": 1,
-        "name": "Gaming Mouse",
-        "oldPrice": "1000",
-        "newPrice": "500",
-        "imagePath": "public\/uploads\/1773703883_download (1).jpeg",
-        "description": "Gaming Mouse"
-    },
-    {
-        "id": 2,
-        "name": "Camera",
-        "oldPrice": "5000",
-        "newPrice": "3500",
-        "imagePath": "public\/uploads\/1773703927_images.jpeg",
-        "description": "Digital camera"
-    },
-    {
+{
+    "2": {
         "id": 3,
         "name": "Wireless Gaming Mouse",
         "oldPrice": "2000",
@@ -23,12 +7,28 @@
         "imagePath": "public\/uploads\/1773704130_download (4).jpeg",
         "description": "Wireless Gaming Mouse"
     },
-    {
+    "3": {
         "id": 4,
         "name": "Airpods",
         "oldPrice": "614",
         "newPrice": "500",
         "imagePath": "public\/uploads\/1773780392_download (3).jpeg",
         "description": "Airpods pro"
+    },
+    "4": {
+        "id": 5,
+        "name": "Gaming Mouse",
+        "oldPrice": "8000",
+        "newPrice": "3500",
+        "imagePath": "public\/uploads\/1773781694_download (2).jpeg",
+        "description": "gaming mouse"
+    },
+    "5": {
+        "id": 6,
+        "name": "Daquan Kline",
+        "oldPrice": "589",
+        "newPrice": "160",
+        "imagePath": "public\/uploads\/1773782394_images (1).jpeg",
+        "description": "Quisquam voluptatem"
     }
-]
+}
