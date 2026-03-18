@@ -57,34 +57,36 @@ showMessage();
 
                         <!-- Product Actions -->
                         <div class="card-footer bg-transparent text-center">
+                            
+                            <?php if ((!isset($_SESSION['user'])) || $_SESSION['user']['role'] == "user") : ?>
+                                <?php if (!getQuantityById($product['id'])): ?>
 
-                            <?php if (!getQuantityById($product['id'])): ?>
-
-                                <a class="btn btn-dark w-100"
-                                    href="handlers/cart/add_item.php?id=<?= $product['id'] ?>">
-                                    Add To Cart
-                                </a>
-
-                            <?php else: ?>
-
-                                <div class="d-flex justify-content-center gap-2">
-
-                                    <a class="btn btn-danger"
-                                        href="handlers/cart/counter.php?id=<?= $product['id'] ?>&operator=decrement">
-                                        -
+                                    <a class="btn btn-dark w-100"
+                                        href="handlers/cart/add_item.php?id=<?= $product['id'] ?>">
+                                        Add To Cart
                                     </a>
 
-                                    <span class="align-self-center">
-                                        <?= getQuantityById($product['id']); ?>
-                                    </span>
+                                <?php else: ?>
 
-                                    <a class="btn btn-success"
-                                        href="handlers/cart/counter.php?id=<?= $product['id'] ?>&operator=increment">
-                                        +
-                                    </a>
+                                    <div class="d-flex justify-content-center gap-2">
 
-                                </div>
+                                        <a class="btn btn-danger"
+                                            href="handlers/cart/counter.php?id=<?= $product['id'] ?>&operator=decrement">
+                                            -
+                                        </a>
 
+                                        <span class="align-self-center">
+                                            <?= getQuantityById($product['id']); ?>
+                                        </span>
+
+                                        <a class="btn btn-success"
+                                            href="handlers/cart/counter.php?id=<?= $product['id'] ?>&operator=increment">
+                                            +
+                                        </a>
+
+                                    </div>
+
+                                <?php endif; ?>
                             <?php endif; ?>
 
                         </div>

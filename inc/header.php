@@ -135,23 +135,25 @@ require_once __DIR__ . '/../core/functions.php';
 
                 </ul>
 
-                <form class="d-flex" action="<?= $base ?>/views/cart.php">
+                <?php if ((!isset($_SESSION['user'])) || $_SESSION['user']['role'] == "user") : ?>
+                    <form class="d-flex" action="<?= $base ?>/views/cart.php">
 
-                    <button class="btn btn-outline-light">
+                        <button class="btn btn-outline-light">
 
-                        <i class="bi bi-cart-fill me-1"></i>
+                            <i class="bi bi-cart-fill me-1"></i>
 
-                        Cart
+                            Cart
 
-                        <span class="badge bg-danger ms-1 rounded-pill">
+                            <span class="badge bg-danger ms-1 rounded-pill">
 
-                            <?= getAllQuantity(); ?>
+                                <?= getAllQuantity(); ?>
 
-                        </span>
+                            </span>
 
-                    </button>
+                        </button>
 
-                </form>
+                    </form>
+                <?php endif; ?>
 
 
 
