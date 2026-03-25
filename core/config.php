@@ -1,5 +1,17 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$base = "http://localhost/eraasoft/tasks/pmsProject";
+
+// $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+
+// $host = $_SERVER['HTTP_HOST'];
+
+// $subfolder = '/eraasoft/tasks/pmsProject';
+
+
+// $base = $protocol . '://' . $host . $subfolder;
+
+
+$base = $_SERVER['PHP_SELF']."/..";
+?>

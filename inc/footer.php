@@ -1,4 +1,5 @@
-        <? $base = "http://localhost/eraasoft/tasks/pmsProject"; ?>
+        <? require_once __DIR__ . '/../core/config.php';
+        //$base = "http://localhost/eraasoft/tasks/pmsProject"; ?>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container">
